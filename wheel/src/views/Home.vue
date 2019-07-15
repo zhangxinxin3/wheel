@@ -1,18 +1,20 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div class="home">
+        <Wheel></Wheel>
+    </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Wheel from '@/components/wheel.vue';
 
 export default Vue.extend({
-  name: 'home',
-  components: {
-    HelloWorld,
-  },
+    name: 'home',
+    components:{
+        Wheel
+    },
+    mounted(){
+        this.$store.dispatch('wheel/getHome');
+    }
 });
 </script>
