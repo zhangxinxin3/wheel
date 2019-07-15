@@ -5,16 +5,20 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(
-  error => {
-    return Promise.reject(error)
-  }
+    config=>{
+        
+        return config
+    },
+    error => {
+        return Promise.reject(error)
+    }
 )
 
 service.interceptors.response.use(
-  response => response.data,
-  error => {
-    return Promise.reject(error)
-  }
+    response => response.data,
+    error => {
+        return Promise.reject(error)
+    }
 )
 
-export default service
+export default service;
