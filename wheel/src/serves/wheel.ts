@@ -12,4 +12,11 @@ export function detail() {
         url: "http://baojia.chelun.com/v2-car-getInfoAndListById.html?SerialID=5371&_1563195473209",
         method: "GET"
     })
+};
+
+export function leftNav(payload:any){
+    return request({
+        url:'/v2-car-getMakeListByMasterBrandId.html?MasterID='+payload+'&_1563196545213',
+        method:"GET"
+    })
 }
