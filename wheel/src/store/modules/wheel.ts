@@ -5,7 +5,9 @@ const state = {
     list:[],
     data:[],
     leftFlag:false,
-    val:'A'
+    val:'A',
+    index:0,
+    carId:''
 };
 
 const mutations = {
@@ -38,7 +40,11 @@ const mutations = {
         return state.carsDate = payload;
     },
     changeVal(state:any,payload:any){
-        return state.val = payload;
+        state.val = payload.val;
+        state.index = payload.index;
+    },
+    changeCarId(state:any,payload:any){
+        state.carId = payload;
     }
 };
 

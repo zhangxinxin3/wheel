@@ -12,7 +12,8 @@
 //     width: 100%;
 //     height: 100%;
 // }
-body{
+html,body{
+    height:100%;
     margin:0;
 }
 #app {
