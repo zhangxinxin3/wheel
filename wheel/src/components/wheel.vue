@@ -1,13 +1,13 @@
 <template>
     <div class="wrapper">
         <div class="wrap" v-for="(item,index) in data" 
-            :key="index" id="item.id">
+            :key="index" id="item.id" ref="wrap">
             <p>{{item.value}}</p>
             <div class="main">
                 <div class="wrapMain" v-for="(items,indexs) in item.child" 
                 :key="indexs" 
                 @click="bind(items.MasterID)">
-                    <img :src="items.CoverPhoto" alt="" />
+                    <img :src="items.CoverPhoto" :alt="items.Name" />
                     <p>{{items.Name}}</p>
                 </div>    
             </div>
@@ -15,23 +15,23 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import { mapState } from 'vuex';
+import bus from '@/utils/bus';
 
 export default Vue.extend({
     name: 'Wheel',
-    computed:{
-        ...mapState({
-            data:state=>state.wheel.data,
-            val:state=>state.wheel.val
-        })
+    props:{
+        data:{
+            type:Array,
+            value:[]
+        }
     },
     mounted(){
-        console.log(this.$store.state)
     },
     methods:{
-        bind(MasterID){
+        bind(MasterID:any){
             this.$store.commit('wheel/changeLeft',true)
             this.$store.dispatch('wheel/getNav',MasterID)
         }
@@ -39,10 +39,11 @@ export default Vue.extend({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .wrapper{
     width:100%;
     height:100%;
+    overflow-y:scroll;
     .wrap{
         width: 100%;
         display: flex;

@@ -1,8 +1,8 @@
 <template>
     <div class="home">
-        <Wheel></Wheel>
-        <LeftList></LeftList>
-        <LeftMosk></LeftMosk>
+        <Wheel :data="data"></Wheel>
+        <LeftList :data="data"></LeftList>
+        <LeftMosk v-if="leftFlag"></LeftMosk>
     </div>
 </template>
 
@@ -11,6 +11,7 @@ import Vue from 'vue';
 import Wheel from '@/components/wheel.vue';
 import LeftList from '@/components/leftList.vue';
 import LeftMosk from '@/components/leftMosk.vue';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
     name: 'home',
@@ -18,6 +19,13 @@ export default Vue.extend({
         Wheel,
         LeftList,
         LeftMosk
+    },
+    computed:{
+        ...mapState({
+            data:(state:any)=>state.wheel.data,
+            carsDate:(state:any)=>state.wheel.carsDate,
+            leftFlag:(state:any)=>state.wheel.leftFlag
+        })
     },
     mounted(){
         this.$store.dispatch('wheel/getHome');

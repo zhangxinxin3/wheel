@@ -1,11 +1,13 @@
 import { wheel, detail ,leftNav} from '@/serves/wheel'
 
 const state = {
-    carsDate: [],
-    list: [],
-    data: [],
-    leftFlag: false,
-    val: 'A',
+    carsDate:[],
+    list:[],
+    data:[],
+    leftFlag:false,
+    val:'A',
+    index:0,
+    carId:'',
     detailObj: {}
 };
 
@@ -38,8 +40,12 @@ const mutations = {
     upLeft(state: any, payload: any) {
         return state.carsDate = payload;
     },
-    changeVal(state: any, payload: any) {
-        return state.val = payload;
+    changeVal(state:any,payload:any){
+        state.val = payload.val;
+        state.index = payload.index;
+    },
+    changeCarId(state:any,payload:any){
+        state.carId = payload;
     },
     upDetail(state: any, payload: any) {
         return state.detailObj = payload
