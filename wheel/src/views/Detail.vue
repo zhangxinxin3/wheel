@@ -2,30 +2,42 @@
   <div class="detail">
     <div class="banner">
       <img :src="detailObj.Picture" alt />
-      <span>xxx张照片</span>
+      <div>xxx张照片</div>
     </div>
     <div class="price">
       <div class="leftPrice">
         <div class="detailPrice">{{detailObj.market_attribute.dealer_price}}</div>
-        <div class="zhidaoPrice">{{detailObj.market_attribute.official_refer_price}}</div>
+        <div class="zhidaoPrice">指导价:{{detailObj.market_attribute.official_refer_price}}</div>
       </div>
       <div class="rightBtn">{{detailObj.BottomEntranceTitle}}</div>
     </div>
+    <div class="tab">
+      <div v-for="(item,index) in tabList" :key="index">{{item}}</div>
+    </div>
+    <carDetail></carDetail>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import { mapState } from "vuex";
+import carDetail from "@/components/carDetail.vue";
 export default Vue.extend({
   name: "detail",
+  data() {
+    return {
+      tabList: ["全部", "2019"]
+    };
+  },
   computed: {
     ...mapState({
       detailObj: state => state.wheel.detailObj
     })
   },
   methods: {},
-  components: {},
+  components: {
+    carDetail
+  },
   mounted() {
     this.$store.dispatch("wheel/getDetail");
   }
@@ -37,52 +49,63 @@ export default Vue.extend({
   flex-direction: column;
   width: 100%;
   height: 100%;
-  overflow-y:scroll;
+  overflow-y: scroll;
+  font-size: 0.32rem;
+  background: #eee;
   .banner {
     width: 100%;
-    height: 200rpx;
+    height: 4rem;
     position: relative;
     img {
       width: 100%;
       height: 100%;
     }
-    span {
-      display: block;
+    div {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 100rpx;
-      background: rgba(0, 0, 0, 0.8);
+      bottom: 0.2rem;
+      right: 0.2rem;
+      background: rgba(0, 0, 0, 0.7);
       color: white;
-      font-size: 30rpx;
-      border-radius: 10rpx;
     }
   }
   .price {
-    height: 100rpx;
+    height: 1rem;
     width: 100%;
-    background:red;
     display: flex;
-    .leftDetail{
-      width: 200rpx;
-      height: 100%;
-      text-align: center;
-      .detailPrice{
-        font-size:40rpx;
-        color:red;
-      }
-      .zhidaoPrice{
-        font-size:26rpx;
-        color:#ccc;
+    background: white;
+    .leftPrice {
+      width: 50%;
+      div {
+        text-align: center;
+        &:nth-child(1) {
+          font-size: 0.4rem;
+          color: red;
+        }
+        &:nth-child(2) {
+          color: #ccc;
+          font-size: 0.28rem;
+        }
       }
     }
-    .rightBtn{
+    .rightBtn {
       width: 50%;
-      background:blueviolet;
-      color:white;
-      height: 40px;
-      line-height: 40rpx;
-      text-align:center;
+      background: blueviolet;
+      color: white;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 5px;
+    }
+  }
+  .tab {
+    height: 0.8rem;
+    width: 100%;
+    display: flex;
+    background: white;
+    line-height: 0.8rem;
+    margin: 0.15rem 0;
+    div {
+      padding: 0 0.2rem;
     }
   }
 }

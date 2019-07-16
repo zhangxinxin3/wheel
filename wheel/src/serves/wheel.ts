@@ -9,7 +9,7 @@ export function wheel() {
 
 export function detail() {
     return request({
-        url: "http://baojia.chelun.com/v2-car-getInfoAndListById.html?SerialID=5371&_1563195473209",
+        url: "http://baojia.chelun.com/v2-car-getInfoAndListById.html?SerialID=4759&_1563263910736",
         method: "GET"
     })
 };
