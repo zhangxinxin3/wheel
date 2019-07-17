@@ -1,6 +1,6 @@
 import request from '@/utils/request';
 
-export function detail() {
+export function detail(params:any) {
     return request({
         url: "http://baojia.chelun.com/v2-car-getInfoAndListById.html?SerialID=5371&_1563195473209",
         method: "GET"

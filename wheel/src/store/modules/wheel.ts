@@ -15,7 +15,9 @@ const state = {
     address:{},
     provinceData:[],
     provinceFlag:false,
-    cityFlag:false
+    cityFlag:false,
+    personInfo: {},
+    detailId:''
 };
 
 const mutations = {
@@ -80,12 +82,17 @@ const mutations = {
     },
     changeFlag(state:any,payload:any){
         state.cityFlag = payload
+    },
+    saveDetailId(state:any,payload:any){
+        state.detailId = payload;
+        console.log("detailId...",state.detailId)
     }
 };
 
 const actions = {
-    async getDetail({ commit }: any, payload: any) {
-        let data = await detail()
+    async getDetail({ commit,state }: any, payload: any) {
+        console.log("detailPayload...", payload)
+        let data = await detail(state.SerialID);
         console.log("dataDetail...", data.data)
         commit("upDetail", data.data)
     },
