@@ -1,4 +1,4 @@
-import request from '@/utils/request';
+import request from '@/utils/request.ts';
 //首页车系
 export function wheel(){
     return request({
