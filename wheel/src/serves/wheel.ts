@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import request from '@/utils/request.ts';
-=======
-import request from '@/utils/request';
 
 export function detail(params:any) {
     return request({
@@ -9,8 +6,6 @@ export function detail(params:any) {
         method: "GET"
     })
 }
-
->>>>>>> f86c7fd7fa97ad33c112deccbdca8d3afc988573
 //首页车系
 export function wheel(){
     return request({
