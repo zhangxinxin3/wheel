@@ -1,8 +1,8 @@
 <template>
   <div class="detail">
-    <div class="banner">
+    <div class="banner" @click="jumpDetailImg">
       <img :src="detailObj.Picture" alt />
-      <div>xxx张照片</div>
+      <div>{{detailObj.pic_group_count}}张照片</div>
     </div>
     <div class="price">
       <div class="leftPrice">
@@ -31,15 +31,20 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      detailObj: state => state.wheel.detailObj
+      detailObj: state => state.wheel.detailObj,
+      carId: state => state.wheel.carId
     })
   },
-  methods: {},
+  methods: {
+    jumpDetailImg(){
+      this.$router.push("/img")
+    }
+  },
   components: {
     carDetail
   },
   mounted() {
-    this.$store.dispatch("wheel/getDetail");
+    this.$store.dispatch("wheel/getDetail",this.carId);
   }
 });
 </script>

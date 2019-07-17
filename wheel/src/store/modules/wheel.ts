@@ -1,14 +1,16 @@
-import { wheel, detail ,leftNav} from '@/serves/wheel'
+import { wheel, detail, leftNav } from '@/serves/wheel'
 
 const state = {
-    carsDate:[],
-    list:[],
-    data:[],
-    leftFlag:false,
-    val:'A',
-    index:0,
-    carId:'',
-    detailObj: {}
+    carsDate: [],
+    list: [],
+    data: [],
+    leftFlag: false,
+    val: 'A',
+    index: 0,
+    carId: '',
+    detailObj: {},
+    personInfo: {},
+    detailId:''
 };
 
 const mutations = {
@@ -40,21 +42,27 @@ const mutations = {
     upLeft(state: any, payload: any) {
         return state.carsDate = payload;
     },
-    changeVal(state:any,payload:any){
+    changeVal(state: any, payload: any) {
         state.val = payload.val;
         state.index = payload.index;
     },
-    changeCarId(state:any,payload:any){
+    changeCarId(state: any, payload: any) {
         state.carId = payload;
+        console.log("carid...", state.carId)
     },
     upDetail(state: any, payload: any) {
-        return state.detailObj = payload
+        state.detailObj = payload
+    },
+    saveDetailId(state:any,payload:any){
+        state.detailId = payload;
+        console.log("detailId...",state.detailId)
     }
 };
 
 const actions = {
     async getDetail({ commit }: any, payload: any) {
-        let data = await detail()
+        console.log("detailPayload...", payload)
+        let data = await detail(payload);
         console.log("dataDetail...", data.data)
         commit("upDetail", data.data)
     },
@@ -70,7 +78,7 @@ const actions = {
         let data = await leftNav(payload);
         console.log('侧边栏...', data)
         commit('upLeft', data.data)
-    }
+    },
 };
 
 export default {

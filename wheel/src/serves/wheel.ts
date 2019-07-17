@@ -7,16 +7,16 @@ export function wheel() {
     })
 }
 
-export function detail() {
+export function detail(payload: any) {
     return request({
-        url: "http://baojia.chelun.com/v2-car-getInfoAndListById.html?SerialID=4759&_1563263910736",
+        url: 'v2-car-getInfoAndListById.html?SerialID=' + payload + '&_1563263910736',
         method: "GET"
     })
 };
 
-export function leftNav(payload:any){
+export function leftNav(payload: any) {
     return request({
-        url:'/v2-car-getMakeListByMasterBrandId.html?MasterID='+payload+'&_1563196545213',
-        method:"GET"
+        url: '/v2-car-getMakeListByMasterBrandId.html?MasterID=' + payload + '&_1563196545213',
+        method: "GET"
     })
 }

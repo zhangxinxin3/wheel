@@ -7,7 +7,7 @@
         <span>指导价:{{item.market_attribute.official_refer_price}}</span>
         <span>{{item.market_attribute.dealer_price_max}}起</span>
       </p>
-      <div class="btn" @click="jumpDetail" :data-link="item.link">询问低价</div>
+      <div class="btn" @click="jumpDetail" :data-ind="index">询问低价</div>
     </div>
   </dir>
 </template>
@@ -20,12 +20,14 @@ export default Vue.extend({
   name: "carDetail",
   computed: {
     ...mapState({
-      detailObj: state => state.wheel.detailObj
+      detailObj: state => state.wheel.detailObj,
+      carId: state => state.wheel.carId
     })
   },
   methods: {
     jumpDetail(e) {
-      this.$router.push({ path: e.target.dataset.link });
+      let id = this.detailObj.list[e.target.dataset.ind].car_id;
+      this.$store.commit("wheel/saveDetailId", id);
     }
   }
 });
