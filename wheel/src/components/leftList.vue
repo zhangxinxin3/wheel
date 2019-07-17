@@ -19,17 +19,17 @@ import { mapState } from 'vuex';
 import bus from '@/utils/bus'
 
 export default Vue.extend({
-    name:"LeftList",
-    data(){
-      return{
-        current: '',
+    name: "LeftList",
+    data() {
+        return {
+        current: "",
         isTouch: false
-      }
+        };
     },
-    props:{
-        data:{
-            type:Array,
-            value:[]
+    props: {
+        data: {
+        type: Array,
+        value: []
         }
     },
     methods:{
@@ -62,48 +62,48 @@ export default Vue.extend({
         },
         updataIndex(index){
             bus.$emit('changeIndex',index)
-       },
+        },
     }
-})
+});
 </script>
 
 <style lang="scss" scoped>
-.leftList{
-    z-index: 99;
-    position: fixed;
-    right: 0;
-    top: 0;
-    height:100%;
-    padding-left: .2rem;
-    display: flex;
-    align-items: center;
+.leftList {
+  z-index: 99;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding-left: 0.2rem;
+  display: flex;
+  align-items: center;
 }
-.list{
-    width:100%;
-    height:50%;
-    li{
-        list-style: none;
-        font-size: .24rem;
-        color: #666;
-        font-weight: 500;
-        padding: .05rem .1rem;
-        box-sizing: border-box;
-    }
+.list {
+  width: 100%;
+  height: 50%;
+  li {
+    list-style: none;
+    font-size: 0.24rem;
+    color: #666;
+    font-weight: 500;
+    padding: 0.05rem 0.1rem;
+    box-sizing: border-box;
+  }
 }
-.letter{
-    display: inline-block;
-    width: 1.6rem;
-    height: 1.6rem;
-    background: rgba(0,0,0, .6);
-    border-radius: .1rem;
-    top: 50%;
-    left: 50%;
-    position: fixed;
-    color: #fff;
-    font-size: .8rem;
-    text-align: center;
-    line-height: 1.6rem;
-    transform: translate3d(-50%, -50%, 0);
+.letter {
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0.1rem;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  color: #fff;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.6rem;
+  transform: translate3d(-50%, -50%, 0);
 }
 </style>
 

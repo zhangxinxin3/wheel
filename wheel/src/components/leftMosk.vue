@@ -38,6 +38,7 @@ export default Vue.extend ({
         },
         detail(id:any){
             this.$store.commit('wheel/changeCarId',id)
+            this.$router.push("/detail")
         }
     }
 })
