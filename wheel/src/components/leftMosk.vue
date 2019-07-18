@@ -23,7 +23,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { mapState } from 'vuex';
-
+import LazyLoad from "@/utils/lazyLoad";
 export default Vue.extend ({
     name:"LeftMosk",
     computed:{
@@ -37,6 +37,7 @@ export default Vue.extend ({
             this.$store.commit('wheel/changeLeft',false)
         },
         detail(id:any){
+            console.log("点击获取id。。",id)
             this.$store.commit('wheel/changeCarId',id)
             this.$router.push("/detail")
         }

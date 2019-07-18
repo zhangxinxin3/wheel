@@ -27,6 +27,7 @@ export default Vue.extend({
   methods: {
     jumpDetail(e) {
       let id = this.detailObj.list[e.target.dataset.ind].car_id;
+      console.log("xxx",id)
       this.$store.commit("wheel/saveDetailId", id);
     }
   }
@@ -50,7 +51,7 @@ export default Vue.extend({
       padding-top: 0.2rem;
     }
     &:nth-child(3) {
-      margin-left: 3.8rem;
+      margin-left: 3.5rem;
       span {
         font-size: 0.3rem;
         &:nth-child(1) {

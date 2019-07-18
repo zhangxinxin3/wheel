@@ -32,26 +32,28 @@ export default Vue.extend({
   computed: {
     ...mapState({
       detailObj: state => state.wheel.detailObj,
-      carId: state => state.wheel.carId
+      carId: state => state.wheel.carId,
+      SerialID: state => state.wheel.SerialID
     })
   },
   methods: {
-    jumpDetailImg(){
-      this.$router.push("/img")
+    jumpDetailImg() {
+      this.$router.push("/img");
+      this.$store.dispatch("wheel/getImgList", this.SerialID);
     }
   },
   components: {
     carDetail
   },
   mounted() {
-    this.$store.dispatch("wheel/getDetail",this.carId);
+    this.$store.dispatch("wheel/getDetail", this.carId);
   }
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .detail {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -93,11 +95,12 @@ export default Vue.extend({
       }
     }
     .rightBtn {
+      margin-top: 0.2rem;
+      height: 0.5rem;
       width: 50%;
       background: blueviolet;
       color: white;
-      height: 30px;
-      line-height: 30px;
+      line-height: 0.5rem;
       text-align: center;
       border-radius: 5px;
     }
